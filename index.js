@@ -4,6 +4,8 @@ const port = process?.env?.port || 8003;
 require("dotenv").config();
 let db = require("./model/db");
 const transactionroute = require("./controller/transaction");
+const constumerroute = require("./controller/Customer");
+
 db.sequelize
   .authenticate()
   .then(() => {
@@ -19,6 +21,8 @@ db.sequelize
     );
     });
     app.use("/api/v1/transaction", transactionroute)
+    app.use("/api/v1/coustmer", constumerroute)
+
 
     app.listen(8003, ()=> {
         console.log("server running at port 8003"); 
